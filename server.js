@@ -29,9 +29,40 @@ const connectDB = async () => {
 
 connectDB()
 
-// routes
+// route to check server - don't really need it
 app.get('/server', (req, res) => {
     res.send('Server...')
+})
+
+app.get('/api/blog', async (req, res) => {
+    try {
+        const posts = await Post.find()
+        res.json({
+            posts: posts
+        })
+    } catch (error) {
+        console.log(error)
+    }
+})
+
+app.post('/api/post', async (req, res) => {
+    try {
+        await Post.create({
+            date: req.body.postDate,
+            title: req.body.postTitle,
+            text: req.body.postText
+        })
+
+        res.json({
+            message: 'New post created...'
+        })
+
+    } catch (error) {
+        res.json({
+            message: 'Something went wrong...'
+        })
+    }
+
 })
 
 // Serve static assets in production

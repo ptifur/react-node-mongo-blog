@@ -1,0 +1,67 @@
+import React, { useState } from 'react'
+import axios from 'axios'
+
+const Post = () => {
+
+    // state + function to update the state
+    const [postDetails, setPostDetails] = useState({
+        postDate: '',
+        postTitle: '',
+        postText: '',
+        message: ''
+    })
+
+    // take the state and override it
+    const formValues = (event) => {
+        setPostDetails({
+            ...postDetails,
+            [event.target.name]: event.target.value
+        })
+    }
+
+    // button submit
+    const publishPost = async (event) => {
+        event.preventDefault()
+
+        // send data as a string
+        // grab data from the useState
+        const body = JSON.stringify({
+            postDate: postDetails.postDate,
+            postTitle: postDetails.postTitle,
+            postText: postDetails.postText
+        })
+
+        // post request to backend
+        // set the body + the headers
+        const response = await axios.post('/api/post', body, {
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        })
+
+        // grab everything using spread operator
+        setPostDetails({
+            ...postDetails,
+            message: response.data.message
+        })
+
+    }
+
+    return (
+        <div>
+            <h2>Create a new post</h2>
+            <form className='form' onSubmit={publishPost}>
+                <label>Date</label>
+                <input required type='text' placeholder='date' id='postDate' name='postDate' onChange={formValues} />
+                <label>Title</label>
+                <input type='text' placeholder='title' id='postTitle' name='postTitle' onChange={formValues} />
+                <label>Text</label>
+                <textarea required placeholder='text...' id='postText' name='postText' onChange={formValues} />
+                <button type='submit'>Publish</button>
+                { postDetails.message ? <h1>{ postDetails.message }</h1> : null }
+            </form>
+        </div>
+    )
+}
+
+export default Post
