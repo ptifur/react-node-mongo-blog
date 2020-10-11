@@ -1,3 +1,7 @@
 # React Node MongoDB blog
 
-WTF is `browser router` in React
+What is `browser router` in React
+
+### Open from terminal
+
+```heroku open -a your-app```
