@@ -51,12 +51,12 @@ const Post = () => {
         <div>
             <h2>Create a new post</h2>
             <form className='form' onSubmit={publishPost} action='/'>
-                <label>Date</label>
-                <input required type='text' placeholder='date' id='postDate' name='postDate' onChange={formValues} />
-                <label>Title</label>
-                <input type='text' placeholder='title' id='postTitle' name='postTitle' onChange={formValues} />
-                <label>Text</label>
-                <textarea required placeholder='text...' id='postText' name='postText' onChange={formValues} />
+                <label for='postDate'>Date</label>
+                <input required type='text' id='postDate' name='postDate' onChange={formValues} />
+                <label for='postTitle'>Title</label>
+                <input type='text' pid='postTitle' name='postTitle' onChange={formValues} />
+                <label for='postText'>Text</label>
+                <textarea required id='postText' name='postText' onChange={formValues} />
                 <button type='submit'>Publish</button>
                 { postDetails.message ? <h1>{ postDetails.message }</h1> : null }
             </form>
