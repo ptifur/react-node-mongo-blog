@@ -54,7 +54,7 @@ const Post = () => {
                 <label for='postDate'>Date</label>
                 <input required type='text' id='postDate' name='postDate' onChange={formValues} />
                 <label for='postTitle'>Title</label>
-                <input type='text' pid='postTitle' name='postTitle' onChange={formValues} />
+                <input type='text' id='postTitle' name='postTitle' onChange={formValues} />
                 <label for='postText'>Text</label>
                 <textarea required id='postText' name='postText' onChange={formValues} />
                 <button type='submit'>Publish</button>

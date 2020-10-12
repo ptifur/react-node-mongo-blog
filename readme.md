@@ -33,8 +33,6 @@ Check the render method of `Blog`. See https://fb.me/react-warning-keys for more
 ## Next
 
 - Paperclip size
-- Check header menu style
-- Fix `label` to address the input
 - Check the subdomain name
 
 ## Next next
