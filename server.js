@@ -21,7 +21,7 @@ const connectDB = async () => {
             useCreateIndex: true,
             useFindAndModify: false
         })
-        console.log('MongoDB is connected...')
+        console.log('MongoDB is connected')
     } catch (error) {
         console.log(error)
     }
@@ -53,6 +53,7 @@ app.post('/api/post', async (req, res) => {
             text: req.body.postText
         })
 
+        // this is used in Post.js
         res.json({
             message: 'New post created...'
         })
@@ -61,7 +62,7 @@ app.post('/api/post', async (req, res) => {
         res.json({
             message: 'Something went wrong...'
         })
-    }
+    } 
 
 })
 
@@ -77,5 +78,5 @@ if (process.env.NODE_ENV === 'production') {
 }
 
 app.listen(port, () => {
-    console.log(`Server listening on port ${port}...`)
+    console.log(`Server listening on port ${port}`)
 })

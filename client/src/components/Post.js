@@ -50,7 +50,7 @@ const Post = () => {
     return (
         <div>
             <h2>Create a new post</h2>
-            <form className='form' onSubmit={publishPost}>
+            <form className='form' onSubmit={publishPost} action='/'>
                 <label>Date</label>
                 <input required type='text' placeholder='date' id='postDate' name='postDate' onChange={formValues} />
                 <label>Title</label>
