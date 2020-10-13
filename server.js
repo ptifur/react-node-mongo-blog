@@ -29,11 +29,7 @@ const connectDB = async () => {
 
 connectDB()
 
-// route to check server - don't really need it
-app.get('/server', (req, res) => {
-    res.send('Server...')
-})
-
+// GET request `posts` contains all the data
 app.get('/api/blog', async (req, res) => {
     try {
         const posts = await Post.find()
@@ -45,6 +41,7 @@ app.get('/api/blog', async (req, res) => {
     }
 })
 
+// POST request -> create new post
 app.post('/api/post', async (req, res) => {
     try {
         await Post.create({
@@ -53,7 +50,7 @@ app.post('/api/post', async (req, res) => {
             text: req.body.postText
         })
 
-        // this is used in Post.js
+        // this is used in newPost.js
         res.json({
             message: 'New post created...'
         })
@@ -66,12 +63,29 @@ app.post('/api/post', async (req, res) => {
 
 })
 
-// Serve static assets in production
+// DELETE request
+app.delete('/api/blog/:id', (req, res) => {
+
+    const id = req.params.id
+
+    Post.findByIdAndDelete(id)
+        .then(result => {
+            console.log(`deleted post`)
+        })
+        .catch(error => console.log(error))
+
+})
+
+// check how message is passed back in POST request
+
+
+
+// serve static assets in production
 if (process.env.NODE_ENV === 'production') {
-    // Set static folder
+    // set static folder
     app.use(express.static('client/build'))
 
-    // Serve React project in production
+    // serve React project in production
     app.get('*', (req, res) => {
         res.sendFile(path.resolve(__dirname, 'client/build', 'index.html'))
     })

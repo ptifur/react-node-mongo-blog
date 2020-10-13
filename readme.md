@@ -1,8 +1,8 @@
 # React Node MongoDB blog
 
-What is `browser router` in React
 
-## Open from terminal
+
+### Open from terminal
 
 ```heroku open -a your-app```
 
@@ -32,11 +32,18 @@ Check the render method of `Blog`. See https://fb.me/react-warning-keys for more
 
 ## Next
 
-- Paperclip size
+- `Paperclip` size or margin
+- register / auth
+- update database users
+
+```yep! looks absolutely pants```
 
 ## Next next
 
-- `x` button
-- `redirect` after submit
-- register / auth
-- update database users
+All right, how do you `redirect`
+
+1. Set `id` as a `key`
+2. `Delete` button style
+3. `DELETE` request -> `try catch`
+
+- try other `redirect` tutorials
