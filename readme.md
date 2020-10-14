@@ -1,6 +1,8 @@
 # React Node MongoDB blog
 
+## In case previous server did not stop
 
+`killall -9 node`
 
 ### Open from terminal
 
