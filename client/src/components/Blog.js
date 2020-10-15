@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from 'react'
 import axios from 'axios'
 import Hero from './partials/Hero'
-
+import { Redirect } from 'react-router-dom'
 const Blog = () => {
 
     const [posts, setPosts] = useState([])
+
+    const [refresh, setRefresh] = useState(false)
 
     const getPosts = async () => {
         const response = await axios.get('/api/blog')
@@ -18,25 +20,27 @@ const Blog = () => {
     const deletePost = (postIdee) => {
 
         const endpoint = `/api/blog/${postIdee}`
-        // console.log(endpoint)
 
-        // do you need this response.json() though?
         fetch(endpoint, {
             method: 'DELETE'
         })
         // .then(response => {
-        //     console.log('deleted...')
+        //     console.log(theRoute)
         // })
         .catch(error => console.log(error))
 
+        setRefresh(true)
+
     }
 
-    // set _id as a key={index} !!!
+    if (refresh) {
+        return <Blog />
+    }
+
     const allPosts = posts.length > 0 && posts.map((post) => {
         return  <>
                 <div className='blogpost'>
                     <button className='deleteButton' type='button' onClick={() => { deletePost(post._id) }} >delete</button>
-                    {post._id}
                     <div className='date'>{post.date}</div>
                     <h3>{post.title}</h3>
                     <div>{post.text}</div>

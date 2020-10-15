@@ -16,15 +16,6 @@ Do you need `key={index}` for mapping in Blog.js
 Warning: Each child in a list should have a unique "key" prop.
 
 Check the render method of `Blog`. See https://fb.me/react-warning-keys for more information.
-    in Fragment (created by Blog)
-    in Blog (created by Context.Consumer)
-    in Route (at App.js:15)
-    in Switch (at App.js:13)
-    in div (at App.js:11)
-    in Router (created by BrowserRouter)
-    in BrowserRouter (at App.js:10)
-    in App (at src/index.js:6) index.js:1
-
 ```
 
 ## Notes to myself
@@ -32,20 +23,17 @@ Check the render method of `Blog`. See https://fb.me/react-warning-keys for more
 - Can't figures out how to redirect after submitting the form
 - Not sure what exactly `axios` does
 
+```yep! looks absolutely pants```
+
 ## Next
 
-- `Paperclip` size or margin
-- register / auth
-- update database users
-
-```yep! looks absolutely pants```
+- Register / auth
+- Update database users
+- Set `id` as a `key`
+- Do you need `.then response` after `fetch()`
 
 ## Next next
 
-All right, how do you `redirect`
-
-1. Set `id` as a `key`
+1 `Paperclip` size or margin
 2. `Delete` button style
 3. `DELETE` request -> `try catch`
-
-- try other `redirect` tutorials

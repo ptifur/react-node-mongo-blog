@@ -69,9 +69,9 @@ app.delete('/api/blog/:id', (req, res) => {
     const id = req.params.id
 
     Post.findByIdAndDelete(id)
-        .then(result => {
-            console.log(`deleted post`)
-        })
+        // .then(result => {
+        //     console.log(`deleted post`)
+        // })
         .catch(error => console.log(error))
 
 })

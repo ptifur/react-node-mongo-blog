@@ -1,15 +1,18 @@
 import React, { useState } from 'react'
 import axios from 'axios'
+import { Redirect } from 'react-router-dom'
 
 const Post = () => {
 
-    // state + function to update the state
     const [postDetails, setPostDetails] = useState({
         postDate: '',
         postTitle: '',
         postText: '',
         message: ''
     })
+
+    // redirect after submitting new post
+    const [theRoute, setTheRoute] = useState(null)
 
     // take the state and override it
     const formValues = (event) => {
@@ -45,6 +48,12 @@ const Post = () => {
             message: response.data.message
         })
 
+        setTheRoute('/wherever')
+
+    }
+
+    if (theRoute) {
+        return <Redirect to='/' />
     }
 
     return (
