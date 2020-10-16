@@ -16,6 +16,8 @@ In form use `htmlFor` within the `<label>`
 
 2. Do you need `.then response` after `fetch()`
 
+3. Pass `id` with `DELETE request` directly, not with the rout endpoint
+
 ## A-ha moment
 
 Here's an idea! Not `refresh` with separate hook and logic.
