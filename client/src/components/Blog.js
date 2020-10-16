@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import axios from 'axios'
 import Hero from './partials/Hero'
-import { Redirect } from 'react-router-dom'
+
 const Blog = () => {
 
     const [posts, setPosts] = useState([])
@@ -17,16 +17,14 @@ const Blog = () => {
         getPosts()
     }, [])
 
-    const deletePost = (postIdee) => {
+    const deletePost = (postId) => {
 
-        const endpoint = `/api/blog/${postIdee}`
+        const endpoint = `/api/blog/${postId}`
 
+        // do you need response here?
         fetch(endpoint, {
             method: 'DELETE'
         })
-        // .then(response => {
-        //     console.log(theRoute)
-        // })
         .catch(error => console.log(error))
 
         setRefresh(true)
@@ -40,8 +38,10 @@ const Blog = () => {
     const allPosts = posts.length > 0 && posts.map((post) => {
         return  <>
                 <div className='blogpost'>
-                    <button className='deleteButton' type='button' onClick={() => { deletePost(post._id) }} >delete</button>
-                    <div className='date'>{post.date}</div>
+                    <div className='top'>
+                        <div className='date'>{post.date}</div>
+                        <button className='deleteButton' type='button' onClick={() => { deletePost(post._id) }} >×</button>
+                    </div>
                     <h3>{post.title}</h3>
                     <div>{post.text}</div>
                 </div>
@@ -50,7 +50,7 @@ const Blog = () => {
 
     return (
         <div className='wrapper'>
-            <Hero />
+            {/* <Hero /> */}
             <h2>Here are the posts, I guess...</h2>
             {allPosts}
         </div>
