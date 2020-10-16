@@ -60,11 +60,11 @@ const Post = () => {
         <div>
             <h2>Create a new post</h2>
             <form className='form' onSubmit={publishPost} action='/'>
-                <label for='postDate'>Date</label>
+                <label htmlFor='postDate'>Date</label>
                 <input required type='text' id='postDate' name='postDate' onChange={formValues} />
-                <label for='postTitle'>Title</label>
+                <label htmlFor='postTitle'>Title</label>
                 <input type='text' id='postTitle' name='postTitle' onChange={formValues} />
-                <label for='postText'>Text</label>
+                <label htmlFor='postText'>Text</label>
                 <textarea required id='postText' name='postText' onChange={formValues} />
                 <button type='submit'>Publish</button>
                 { postDetails.message ? <h1>{ postDetails.message }</h1> : null }
